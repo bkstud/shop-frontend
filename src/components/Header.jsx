@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
+import AccountMenu from './Account'
 
 const BACKEND_URL = "https://localhost:5000/api/v1"
 
@@ -29,7 +30,6 @@ export default function TopHeader(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Shop
           </Typography>
-          <Button color="inherit" disabled={true}>Login via:</Button>
           <a href={BACKEND_URL + "/login/github"}>
               <IconButton color="inherit" aria-label="github login" href="url"
                           component="span">
@@ -47,6 +47,8 @@ export default function TopHeader(props) {
               <GoogleIcon/>
             </IconButton>
           </a>
+          
+          <AccountMenu></AccountMenu>
 
         </Toolbar>
       </AppBar>
