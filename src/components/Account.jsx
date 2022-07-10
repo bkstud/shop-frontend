@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import {logoutUser} from '../api/Api'
 
 export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,7 +34,7 @@ export default function AccountMenu(props) {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{props.user ? props.user[0].toUpperCase() : '?'}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -91,9 +92,9 @@ export default function AccountMenu(props) {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={logoutUser}>
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <Logout fontSize="small"/>
           </ListItemIcon>
           Logout
         </MenuItem>

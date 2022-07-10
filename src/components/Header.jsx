@@ -10,8 +10,7 @@ import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import AccountMenu from './Account'
-
-const BACKEND_URL = "https://localhost:5000/api/v1"
+import {getApiUrl} from '../api/Api'
 
 export default function TopHeader(props) {
   return (
@@ -30,25 +29,25 @@ export default function TopHeader(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Shop
           </Typography>
-          <a href={BACKEND_URL + "/login/github"}>
+          <a href={getApiUrl() + "/login/github"}>
               <IconButton color="inherit" aria-label="github login" href="url"
                           component="span">
                 <GithubIcon/>
               </IconButton>  
             </a>
-          <a href={BACKEND_URL + "/login/facebook"}>
+          <a href={getApiUrl() + "/login/facebook"}>
             <IconButton color="inherit" aria-label="facebook login" component="span">
               <FacebookIcon />
             </IconButton>
           </a>
           
-          <a href={BACKEND_URL + "/login/google"}>
+          <a href={getApiUrl() + "/login/google"}>
             <IconButton color="inherit" aria-label="google login" component="span">
               <GoogleIcon/>
             </IconButton>
           </a>
           
-          <AccountMenu></AccountMenu>
+          <AccountMenu user={props.user}></AccountMenu>
 
         </Toolbar>
       </AppBar>

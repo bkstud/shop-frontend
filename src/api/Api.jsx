@@ -1,14 +1,14 @@
 import Cookies from 'js-cookie';
 
 
-const BACKEND_ADDRESS = process.env.REACT_APP_BACKEND_ADDRESS || "https://localhost:3000"
+const BACKEND_ADDRESS = process.env.REACT_APP_BACKEND_ADDRESS || "https://localhost:5000"
 
 const getApiUrl = () => {
     return BACKEND_ADDRESS + "/api/v1"
 }
 
 async function getCurrentUser() {
-    return fetch(getApiUrl + "/user/", {        
+    return fetch(getApiUrl() + "/user/", {        
                     credentials: 'include',
                     method: "GET",
                     headers: {
@@ -19,6 +19,7 @@ async function getCurrentUser() {
 
 const logoutUser = () => {
     Cookies.remove('store', { path: '' })
+    window.location.href="/"
 }
 
 async function getItems() {
@@ -35,5 +36,4 @@ export {
     getApiUrl,
     getCurrentUser,
     logoutUser,
-    logoutUser
 }
