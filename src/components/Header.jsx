@@ -3,12 +3,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountMenu from './Account'
 import {getApiUrl} from '../api/Api'
 
@@ -24,7 +24,11 @@ export default function TopHeader(props) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-          <MenuIcon />
+          
+          <IconButton color="inherit" aria-label="shoping cart" component="span">
+            <ShoppingCartIcon/>
+          </IconButton>
+          
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Shop
@@ -47,7 +51,11 @@ export default function TopHeader(props) {
             </IconButton>
           </a>
           
+          
           <AccountMenu user={props.user}></AccountMenu>
+          
+          
+
 
         </Toolbar>
       </AppBar>
