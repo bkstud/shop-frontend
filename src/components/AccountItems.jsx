@@ -35,7 +35,7 @@ export default function AccountItems(props) {
                 </ListItemIcon>
                 Settings
             </MenuItem>
-            <MenuItem onClick={logoutUser}>
+            <MenuItem onClick={()=>{logoutUser();props.setUser(null)}}>
                 <ListItemIcon>
                 <Logout fontSize="small"/>
                 </ListItemIcon>

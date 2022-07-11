@@ -66,7 +66,7 @@ export default function AccountMenu(props) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-      <AccountItems user={props.user}/>
+      <AccountItems user={props.user} setUser={props.setUser}/>
       </Menu>
     </React.Fragment>
   );

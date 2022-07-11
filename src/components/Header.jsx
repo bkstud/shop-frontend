@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Badge from '@mui/material/Badge';
 import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -12,7 +12,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountMenu from './Account'
 import {getApiUrl} from '../api/Api'
 
-export default function TopHeader(props) {
+export default function Header(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -24,10 +24,13 @@ export default function TopHeader(props) {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
+
+            <IconButton color="inherit" aria-label="shoping cart" component="span">
+              <Badge badgeContent={4} color="error">
+                <ShoppingCartIcon color="inherit"/>
+              </Badge>
+            </IconButton>
           
-          <IconButton color="inherit" aria-label="shoping cart" component="span">
-            <ShoppingCartIcon/>
-          </IconButton>
           
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -52,7 +55,7 @@ export default function TopHeader(props) {
           </a>
           
           
-          <AccountMenu user={props.user}></AccountMenu>
+          <AccountMenu user={props.user} setUser={props.setUser}></AccountMenu>
           
           
 

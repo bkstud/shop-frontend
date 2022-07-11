@@ -1,29 +1,15 @@
-import React, {useState, useEffect}  from 'react';
-import {getCurrentUser} from '../api/Api'
-import TopHeader from './Header';
-
-function useUser() {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-      console.log('Hello from useEffect!');
-      setUser(null)
-      getCurrentUser().then((response) => {
-          if(response.ok){
-              response.json().then(
-                  (data) => setUser(data["user"]))
-          }
-          else{
-            setUser(null)  
-          }
-      })
-  }, []);
-  return user
-}
+import Header from './Header';
+import useUser from '../hooks/User'
+import useItems from '../hooks/Items'
+import useBasket from '../hooks/Basket'
 
 export default function Page(props) {
+  const {user, setUser} = useUser()
+  const {items, setItems} = useItems()
+  const {basket, setBasket} = useBasket()
   return (
       <div>
-        <TopHeader user={useUser()}/>
+        <Header user={user} setUser={setUser}/>
       </div>
     )
 }
