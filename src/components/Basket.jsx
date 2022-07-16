@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RemoveShoppingCart from '@mui/icons-material/RemoveShoppingCart';
 import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 
 
 export default function Basket(props) {
@@ -19,8 +20,10 @@ export default function Basket(props) {
     
     var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
+    <Grid container spacing={3}>
+    <Grid item xs={6}>
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 450, maxWidth: 450 }} aria-label="simple table">
+            <Table sx={{ minWidth: 150, maxWidth: 750 }} aria-label="simple table">
             <TableHead>
                 <TableRow>
                 <TableCell>Product</TableCell>
@@ -63,5 +66,7 @@ export default function Basket(props) {
             </TableBody>
             </Table>
         </TableContainer>
+    </Grid>
+    </Grid>
     );
 }
