@@ -11,6 +11,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountMenu from './AccountMenu'
 import {getApiUrl} from '../api/Api'
+import {Link} from 'react-router-dom';
 
 export default function Header(props) {
   return (
@@ -27,14 +28,14 @@ export default function Header(props) {
 
             <IconButton color="inherit" aria-label="shoping cart" component="span">
               <Badge badgeContent={props.basketCount} color="error">
-                <ShoppingCartIcon color="inherit"/>
+              <Link to="/basket"><ShoppingCartIcon color="inherit"/></Link>
               </Badge>
             </IconButton>
           
           
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Shop
+            <Link to="/">Shop</Link>
           </Typography>
           <a href={getApiUrl() + "/login/github"}>
               <IconButton color="inherit" aria-label="github login" href="url"

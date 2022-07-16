@@ -1,9 +1,10 @@
 import Header from './Header';
-import ItemGrid from './ItemGrid' 
+import Items from './ItemGrid' 
+import Basket from './Basket';
 import useUser from '../hooks/User'
 import useItems from '../hooks/Items'
 import useBasket from '../hooks/Basket'
-
+import {Route, Routes} from 'react-router-dom';
 
 export default function Page(props) {
   const {user, setUser} = useUser()
@@ -15,7 +16,11 @@ export default function Page(props) {
         <Header user={user} 
                 setUser={setUser}
                 basketCount={basketHook.basket.length}/>
-        <ItemGrid items={items} basket={basketHook}/>
+        <Routes>
+          <Route path="/" element={<Items items={items} basket={basketHook}/>} />
+          <Route path="/basket" element={<Basket/>} />
+        </Routes>
+        
       </div>
     )
 }
