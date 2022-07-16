@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 export default function Item(props) {
   const item = props.item;
   const basket = props.basket;
-  const [disabled, setDisabled] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(basket.basket.includes(item));
   const addToCart = () => {
     basket.setBasket(basket.basket.concat(item))
     setDisabled(true)
