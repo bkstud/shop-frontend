@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-// import useUser from '../hooks/User'
+
 
 const BACKEND_ADDRESS = process.env.REACT_APP_BACKEND_ADDRESS || "https://localhost:5000"
 

@@ -9,7 +9,7 @@ import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountMenu from './Account'
+import AccountMenu from './AccountMenu'
 import {getApiUrl} from '../api/Api'
 
 export default function Header(props) {
