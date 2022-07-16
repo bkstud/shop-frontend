@@ -26,7 +26,7 @@ export default function Header(props) {
           >
 
             <IconButton color="inherit" aria-label="shoping cart" component="span">
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={props.basketCount} color="error">
                 <ShoppingCartIcon color="inherit"/>
               </Badge>
             </IconButton>

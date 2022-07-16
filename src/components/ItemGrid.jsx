@@ -12,13 +12,13 @@ export default function ItemGrid(props) {
            props.items.forEach( (it) =>
                 {
                 <Grid item xs={4}>
-                    <Item>xs=8</Item>
+                    <Item/>
                </Grid>}
             )
            }
            
            <Grid item xs={4}>
-              <Item>xs=8</Item>
+              <Item/>
            </Grid>
           </Grid>
         </Box>

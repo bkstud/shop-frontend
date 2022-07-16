@@ -8,12 +8,14 @@ import useBasket from '../hooks/Basket'
 export default function Page(props) {
   const {user, setUser} = useUser()
   const {items, setItems} = useItems()
-  const {basket, setBasket} = useBasket()
+  const basketHook = useBasket()
 
   return (
       <div>
-        <Header user={user} setUser={setUser}/>
-        <ItemGrid items={items} basket={{basket, setBasket}}/>
+        <Header user={user} 
+                setUser={setUser}
+                basketCount={basketHook.basket.length}/>
+        <ItemGrid items={items} basket={basketHook}/>
       </div>
     )
 }

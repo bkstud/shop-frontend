@@ -1,5 +1,4 @@
-import React, {useState, useEffect}  from 'react';
-import {getItems} from '../api/Api'
+import {useState}  from 'react';
 
 export default function useBasket() {
     const [basket, setBasket] = useState([]);
