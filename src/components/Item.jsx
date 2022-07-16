@@ -4,7 +4,17 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-export default function Item() {
+
+
+export default function Item(props) {
+  const item = props.item;
+  const basket = props.basket;
+  const [disabled, setDisabled] = React.useState(false);
+  const addToCart = () => {
+    basket.setBasket(basket.basket.concat(item))
+    setDisabled(true)
+  }
+
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         <Box sx={{ my: 1, mx: 2,
@@ -12,23 +22,27 @@ export default function Item() {
                     border: 1 }}>
             <Grid container alignItems="center">
                 <Grid item xs>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Toothbrush
+                    <Typography gutterBottom variant="h6" component="div">
+                    {item.Name}
                     </Typography>
                 </Grid>
                 <Grid item>
                     <Typography gutterBottom variant="h6" component="div">
-                    $4.50
+                    ${item.Price}
                     </Typography>
                 </Grid>
             </Grid>
-            <Typography color="text.secondary" variant="body2">
-            Pinstriped cornflower blue cotton blouse takes you on a walk to the park or
-            just down the hall.
+            <Typography color="text.secondary" variant="body3">
+                {item.Description}
             </Typography>
         
             <Box sx={{ mt: 3, ml: 1, mb: 1}}>
-                <Button>Add to cart</Button>
+                <Button variant="contained"
+                onClick={() => {
+                    addToCart(item, basket)
+                  }}
+                disabled={disabled}
+                >Add to cart</Button>
             </Box>
         </Box>
     </Box>
