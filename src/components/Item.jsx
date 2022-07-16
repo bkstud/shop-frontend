@@ -18,7 +18,7 @@ export default function Item(props) {
   }
   
   const removeFromCart = () => {
-    basket.setBasket(basket.basket.filter((value) => value.ID != item.ID) )
+    basket.setBasket(basket.basket.filter((value) => value.ID !== item.ID) )
     setDisabled(false)
   }
 

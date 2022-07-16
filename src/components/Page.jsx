@@ -6,9 +6,10 @@ import useItems from '../hooks/Items'
 import useBasket from '../hooks/Basket'
 import {Route, Routes} from 'react-router-dom';
 
+
 export default function Page(props) {
   const {user, setUser} = useUser()
-  const {items, setItems} = useItems()
+  const {items} = useItems()
   const basketHook = useBasket()
 
   return (
@@ -18,7 +19,7 @@ export default function Page(props) {
                 basketCount={basketHook.basket.length}/>
         <Routes>
           <Route path="/" element={<Items items={items} basket={basketHook}/>} />
-          <Route path="/basket" element={<Basket/>} />
+          <Route path="/basket" element={<Basket basketHook={basketHook}/>} />
         </Routes>
         
       </div>
