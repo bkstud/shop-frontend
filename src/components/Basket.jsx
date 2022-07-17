@@ -8,20 +8,25 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RemoveShoppingCart from '@mui/icons-material/RemoveShoppingCart';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import Alert from '@mui/material/Alert';
+import {Link} from 'react-router-dom';
 
 
 export default function Basket(props) {
     const {basket, setBasket} = props.basketHook
-    
+    const user = props.user;
+
     const removeFromBasket = (ID) => {
         setBasket(basket.filter((value) => value.ID !== ID) )
     }
-    
+
     var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
     <Grid container spacing={3}>
-    <Grid item xs={6}>
+    <Grid item xs={{ flexGrow: 1 }}>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 150, maxWidth: 750 }} aria-label="simple table">
             <TableHead>
@@ -48,7 +53,7 @@ export default function Basket(props) {
                     </TableCell>
                 </TableRow>
                 ))}
-                
+
                 <TableRow
                     key="summary"
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -60,12 +65,37 @@ export default function Basket(props) {
                     basketSummary
                     }$
                     </TableCell>
-                    <TableCell align="left"></TableCell>
+                    <TableCell align="left">
+
+
+                    <Link to="/checkout">
+                        <Button variant="contained" 
+                                size="small"
+                                endIcon={<ShoppingCartCheckoutIcon />} 
+                                disabled={basket.length === 0 || !props.user}
+                        >
+                            checkout    
+                        </Button>
+                    </Link>
+                    </TableCell>
                 </TableRow>
+                {
+                (basket.length > 0 && !props.user) && (
+                <TableRow>
+                    <TableCell/><TableCell/>
+                        <TableCell align="left">
+                        <Alert variant="outlined" severity="info">
+                            Login to go to checkout
+                        </Alert>
+                    </TableCell>
+                </TableRow>)
+                }
 
             </TableBody>
             </Table>
+
         </TableContainer>
+
     </Grid>
     </Grid>
     );

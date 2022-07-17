@@ -1,6 +1,7 @@
 import Header from './Header';
 import Items from './ItemGrid' 
 import Basket from './Basket';
+import Checkout from './Checkout';
 import useUser from '../hooks/User'
 import useItems from '../hooks/Items'
 import useBasket from '../hooks/Basket'
@@ -19,7 +20,8 @@ export default function Page(props) {
                 basketCount={basketHook.basket.length}/>
         <Routes>
           <Route path="/" element={<Items items={items} basket={basketHook}/>} />
-          <Route path="/basket" element={<Basket basketHook={basketHook}/>} />
+          <Route path="/basket" element={<Basket basketHook={basketHook} user={user}/>} />
+          <Route path="/checkout" element={<Checkout basketHook={basketHook} user={user}/>} />
         </Routes>
         
       </div>

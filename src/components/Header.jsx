@@ -26,11 +26,13 @@ export default function Header(props) {
             sx={{ mr: 2 }}
           >
 
-            <IconButton color="inherit" aria-label="shoping cart" component="span">
-              <Badge badgeContent={props.basketCount} color="error">
-              <Link to="/basket"><ShoppingCartIcon color="inherit"/></Link>
-              </Badge>
-            </IconButton>
+            <Link to="/basket">
+              <IconButton color="inherit" aria-label="shoping cart" component="span">
+                <Badge badgeContent={props.basketCount} color="error">
+                  <ShoppingCartIcon color="inherit"/>    
+                </Badge>
+              </IconButton>
+            </Link>
           
           
           </IconButton>
