@@ -22,7 +22,7 @@ export default function Basket(props) {
     const removeFromBasket = (ID) => {
         setBasket(basket.filter((value) => value.ID !== ID) )
     }
-
+    var buttonInactive = basket.length === 0 || !props.user
     var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
     <Grid container spacing={3}>
@@ -68,11 +68,11 @@ export default function Basket(props) {
                     <TableCell align="left">
 
 
-                    <Link to="/checkout">
+                    <Link to={buttonInactive ? "#" : "/checkout"}>
                         <Button variant="contained" 
                                 size="small"
                                 endIcon={<ShoppingCartCheckoutIcon />} 
-                                disabled={basket.length === 0 || !props.user}
+                                disabled={buttonInactive}
                         >
                             checkout    
                         </Button>
