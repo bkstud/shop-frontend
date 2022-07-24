@@ -31,9 +31,21 @@ async function getItems() {
                 })
 }
 
+
+async function postItems(endpoint, items) {
+    return fetch(getApiUrl() + endpoint, {        
+                    credentials: "include",
+                    method: "POST",
+                    headers: {
+                        Cookie: "store=" + Cookies.get('store')
+                    },
+                })
+}
+
 export {
     getApiUrl,
     getCurrentUser,
     logoutUser,
     getItems,
+    postItems,
 }
