@@ -76,11 +76,3 @@ export default function Checkout(props) {
           )
     )
 }
-
-// {
-  // basket.map((item) => (
-  //     <input type="hidden" key={item.ID} name="item" value={item.Name}>1</input>
-  //   )
-//   )
-// }
-
