@@ -1,21 +1,7 @@
 import Alert from '@mui/material/Alert';
 import React, { useState, useEffect } from "react";
-import {getApiUrl, postItems} from '../api/Api'
-import {Navigate} from 'react-router-dom';
+import {getApiUrl} from '../api/Api'
 
-// TODO:
-function orderBasket(basket){
-    // PATCH request to change ordered items from 'available' to 'sold'
-    // POST request to backend /transactions endpoint with new transaction.
-}
-
-const ProductDisplay = () => (
-    <section>
-
-      <form action={getApiUrl() + "/payment/create-checkout-session"} method="POST">
-      </form>
-    </section>
-  );
   
 const Message = ({ message }) => (
     <section>
@@ -26,7 +12,7 @@ const Message = ({ message }) => (
 
 export default function Checkout(props) {
     const user = props.user;
-    const {basket, setBasket} = props.basketHook
+    const {basket} = props.basketHook
     const [message, setMessage] = useState("");
     useEffect(() => {
 
@@ -44,7 +30,7 @@ export default function Checkout(props) {
         if (query.get("success")) {
           setMessage(
             <Alert variant="filled" severity="success">
-              "Order placed! You will receive an email confirmation."
+              Order placed! You will receive an email confirmation.
             </Alert>
             )
             
@@ -53,11 +39,11 @@ export default function Checkout(props) {
         if (query.get("canceled")) {
           setMessage(
             <Alert variant="filled" severity="info">
-              "Order canceled -- continue to shop around and checkout when you're ready."
+              Order canceled -- continue to shop around and checkout when you're ready.
             </Alert>
           );
         }
-      }, []);
+      }, [user, basket.length]);
       
     if(!user)
     return (
