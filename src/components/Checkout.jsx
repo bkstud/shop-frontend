@@ -32,17 +32,29 @@ export default function Checkout(props) {
 
         if(user && basket.length > 0) {
           document.getElementById("checkout-form").submit();
+        } else {
+          setMessage(
+            <Alert variant="filled" severity="error">
+            Please login to finalize purchases
+            </Alert>
+          )
         }
         // Check to see if this is a redirect back from Checkout
         const query = new URLSearchParams(window.location.search);
-        // form.submit()
         if (query.get("success")) {
-          setMessage("Order placed! You will receive an email confirmation.");
+          setMessage(
+            <Alert variant="filled" severity="success">
+              "Order placed! You will receive an email confirmation."
+            </Alert>
+            )
+            
         }
     
         if (query.get("canceled")) {
           setMessage(
-            "Order canceled -- continue to shop around and checkout when you're ready."
+            <Alert variant="filled" severity="info">
+              "Order canceled -- continue to shop around and checkout when you're ready."
+            </Alert>
           );
         }
       }, []);
