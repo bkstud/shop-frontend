@@ -11,9 +11,10 @@ import GoogleIcon from '@mui/icons-material/Google';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountMenu from './AccountMenu'
 import {getApiUrl} from '../api/Api'
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 export default function Header(props) {
+  const location = useLocation();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -39,19 +40,19 @@ export default function Header(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/">Shop</Link>
           </Typography>
-          <a href={getApiUrl() + "/login/github"}>
+          <a href={getApiUrl() + "/login/github?location=" + location.pathname}>
               <IconButton color="inherit" aria-label="github login" href="url"
                           component="span">
                 <GithubIcon/>
               </IconButton>  
             </a>
-          <a href={getApiUrl() + "/login/facebook"}>
+          <a href={getApiUrl() + "/login/facebook?location=" + location.pathname}>
             <IconButton color="inherit" aria-label="facebook login" component="span">
               <FacebookIcon />
             </IconButton>
           </a>
           
-          <a href={getApiUrl() + "/login/google"}>
+          <a href={getApiUrl() + "/login/google?location=" + location.pathname}>
             <IconButton color="inherit" aria-label="google login" component="span">
               <GoogleIcon/>
             </IconButton>
