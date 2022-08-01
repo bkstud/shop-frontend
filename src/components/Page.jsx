@@ -23,7 +23,6 @@ export default function Page() {
           <Route path="/basket" element={<Basket basketHook={basketHook} user={user}/>} />
           <Route path="/checkout" element={<Checkout basketHook={basketHook} user={user}/>} />
         </Routes>
-        
       </div>
     )
 }

@@ -12,7 +12,7 @@ export default function useUser() {
                     (data) => setUser(data["user"]))
             }
             else{
-            setUser(null)  
+                setUser(null)  
             }
         })
     }, []);
