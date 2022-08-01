@@ -18,6 +18,7 @@ export default function Checkout(props) {
                   Please login to finalize purchases
               </Alert>
           )
+          return
         }
 
         if(formGate) {
@@ -25,11 +26,7 @@ export default function Checkout(props) {
           if(form) {
             form.submit();
           }
-        } else if(basket.length === 0) {
-          setMessage(
-            <Alert variant="filled" severity="info">
-            No items in basket.
-            </Alert>)
+          return
         }
 
         const query = new URLSearchParams(window.location.search);
@@ -41,6 +38,7 @@ export default function Checkout(props) {
               Order placed! You will receive an email confirmation.
             </Alert>
             )
+            return
 
         }
 
@@ -50,6 +48,15 @@ export default function Checkout(props) {
               Order canceled -- continue to shop around and checkout when you're ready.
             </Alert>
           );
+          return
+        }
+        
+        if(basket.length === 0) {
+          setMessage(
+            <Alert variant="filled" severity="info">
+            No items in basket.
+            </Alert>)
+            return
         }
       }, [user, basket.length, formGate, setBasket]);
 
@@ -63,6 +70,7 @@ export default function Checkout(props) {
                 <div>
                   <input type="hidden" key={item.ID} name="name" value={item.Name}></input>
                   <input type="hidden" key={item.ID} name="price" value={item.Price}></input>
+                  <input type="hidden" key={item.ID} name="id" value={item.ID}></input>
                 </div>
               )
             )
