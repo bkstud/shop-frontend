@@ -8,7 +8,7 @@ import useBasket from '../hooks/Basket'
 import {Route, Routes} from 'react-router-dom';
 
 
-export default function Page(props) {
+export default function Page() {
   const {user, setUser} = useUser()
   const {items} = useItems()
   const basketHook = useBasket()
