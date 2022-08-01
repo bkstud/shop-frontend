@@ -8,7 +8,7 @@ const getApiUrl = () => {
 }
 
 async function getCurrentUser() {
-    return await fetch(getApiUrl() + "/user/", {        
+    return fetch(getApiUrl() + "/user/", {        
                     credentials: 'include',
                     method: "GET",
                     headers: {
@@ -22,7 +22,7 @@ const logoutUser = () => {
 }
 
 async function getItems() {
-    return await fetch(getApiUrl() + "/items/", {        
+    return fetch(getApiUrl() + "/items/", {        
                     credentials: 'include',
                     method: "GET",
                     headers: {
@@ -41,13 +41,14 @@ async function getBasket() {
                 })
 }
 
-async function postItems(endpoint, items) {
+async function patchItems(endpoint, items) {
     return fetch(getApiUrl() + endpoint, {        
                     credentials: "include",
-                    method: "POST",
+                    method: "PATCH",
                     headers: {
                         Cookie: "store=" + Cookies.get('store')
                     },
+                    body: JSON.stringify(items)
                 })
 }
 
@@ -56,6 +57,6 @@ export {
     getCurrentUser,
     logoutUser,
     getItems,
-    postItems,
+    patchItems,
     getBasket
 }

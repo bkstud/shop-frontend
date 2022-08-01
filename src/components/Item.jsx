@@ -5,20 +5,25 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import RemoveShoppingCart from '@mui/icons-material/RemoveShoppingCart';
 import IconButton from '@mui/material/IconButton';
+import {patchItems} from '../api/Api'
 
 
 
 export default function Item(props) {
   const item = props.item;
-  const basket = props.basket;
-  const [disabled, setDisabled] = React.useState(basket.basket.includes(item));
+  const {basket, setBasket} = props.basket;
+  const [disabled, setDisabled] = React.useState(basket.some((value) => value.ID === item.ID));
   const addToCart = () => {
-    basket.setBasket(basket.basket.concat(item))
+    const newBasket = basket.concat(item)
+    setBasket(newBasket)
+    patchItems("/basket/", newBasket)
     setDisabled(true)
   }
   
   const removeFromCart = () => {
-    basket.setBasket(basket.basket.filter((value) => value.ID !== item.ID) )
+    const newBasket = basket.filter((value) => value.ID !== item.ID)
+    setBasket(newBasket)
+    patchItems("/basket/", newBasket)
     setDisabled(false)
   }
 

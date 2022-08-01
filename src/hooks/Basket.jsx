@@ -7,7 +7,7 @@ export default function useBasket() {
         getBasket().then((response) => {
             if(response.ok){
                 response.json().then(
-                    (data) => console.log('baske:=', data))
+                    (data) => setBasket(data))
             }
         })
     }, []);
