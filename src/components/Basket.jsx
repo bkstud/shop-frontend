@@ -25,7 +25,7 @@ export default function Basket(props) {
         setBasket(newBasket)
         patchItems("/basket/", newBasket)
     }
-    var buttonInactive = basket.length === 0 || !props.user
+    var buttonInactive = basket.length === 0 || !user
     var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
     <Grid container spacing={3}>
@@ -83,7 +83,7 @@ export default function Basket(props) {
                     </TableCell>
                 </TableRow>
                 {
-                (basket.length > 0 && !props.user) && (
+                (basket.length > 0 && !user) && (
                 <TableRow>
                     <TableCell/><TableCell/>
                         <TableCell align="left">
