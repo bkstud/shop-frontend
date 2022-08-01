@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Alert from '@mui/material/Alert';
 import {Link} from 'react-router-dom';
+import {patchItems} from '../api/Api';
 
 
 export default function Basket(props) {
@@ -20,7 +21,9 @@ export default function Basket(props) {
     const user = props.user;
 
     const removeFromBasket = (ID) => {
-        setBasket(basket.filter((value) => value.ID !== ID) )
+        const newBasket = basket.filter((value) => value.ID !== ID)
+        setBasket(newBasket)
+        patchItems("/basket/", newBasket)
     }
     var buttonInactive = basket.length === 0 || !props.user
     var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)

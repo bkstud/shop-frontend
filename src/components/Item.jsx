@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import RemoveShoppingCart from '@mui/icons-material/RemoveShoppingCart';
 import IconButton from '@mui/material/IconButton';
-import {patchItems} from '../api/Api'
+import {patchItems} from '../api/Api';
 
 
 
