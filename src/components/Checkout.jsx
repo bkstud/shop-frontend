@@ -28,7 +28,7 @@ export default function Checkout(props) {
           return
         }
 
-        let query = new URLSearchParams(window.location.search);
+        // let query = new URLSearchParams(window.location.search);
         if (query.get("success")) {
           patchItems("/basket/", [])
           setBasket([])
@@ -56,6 +56,7 @@ export default function Checkout(props) {
             No items in basket.
             </Alert>)
         }
+        // eslint-disable-next-line
       }, [user, basket.length, formGate, setBasket]);
 
     if (formGate) {
