@@ -1,7 +1,6 @@
 import Alert from '@mui/material/Alert';
 import React, { useState, useEffect } from "react";
-import {getApiUrl} from '../api/Api'
-import {patchItems} from '../api/Api';
+import {getApiUrl, patchItems} from '../api/Api'
 
 
 export default function Checkout(props) {
@@ -56,7 +55,6 @@ export default function Checkout(props) {
             <Alert variant="filled" severity="info">
             No items in basket.
             </Alert>)
-            return
         }
       }, [user, basket.length, formGate, setBasket]);
 
@@ -80,10 +78,11 @@ export default function Checkout(props) {
         </div>
       )
     }
-    else
-    return (
-            <div>
-              {message}
-            </div>
-          )
+    else {
+      return (
+              <div>
+                {message}
+              </div>
+            )
+    }
 }

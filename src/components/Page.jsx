@@ -2,9 +2,9 @@ import Header from './Header';
 import Items from './ItemGrid' 
 import Basket from './Basket';
 import Checkout from './Checkout';
-import useUser from '../hooks/User'
-import useItems from '../hooks/Items'
-import useBasket from '../hooks/Basket'
+import useUser from '../hooks/useUser'
+import useItems from '../hooks/useItems'
+import useBasket from '../hooks/useBasket'
 import {Route, Routes} from 'react-router-dom';
 
 
