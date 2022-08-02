@@ -7,7 +7,7 @@ export default function Checkout(props) {
     const user = props.user;
     const {basket, setBasket} = props.basketHook;
     const [message, setMessage] = useState("");
-    const query = new URLSearchParams(window.location.search);
+    let query = new URLSearchParams(window.location.search);
     const formGate = user && basket.length > 0 && !query.get("canceled") && !query.get("success")
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function Checkout(props) {
           return
         }
 
-        const query = new URLSearchParams(window.location.search);
+        let query = new URLSearchParams(window.location.search);
         if (query.get("success")) {
           patchItems("/basket/", [])
           setBasket([])
