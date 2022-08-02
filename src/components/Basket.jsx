@@ -25,8 +25,8 @@ export default function Basket(props) {
         setBasket(newBasket)
         patchItems("/basket/", newBasket)
     }
-    var buttonInactive = basket.length === 0 || !user
-    var basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
+    let buttonInactive = basket.length === 0 || !user
+    let basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
     <Grid container spacing={3}>
     <Grid item xs={{ flexGrow: 1 }}>
