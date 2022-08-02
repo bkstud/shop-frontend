@@ -28,7 +28,6 @@ export default function Checkout(props) {
           return
         }
 
-        // let query = new URLSearchParams(window.location.search);
         if (query.get("success")) {
           patchItems("/basket/", [])
           setBasket([])
@@ -49,7 +48,7 @@ export default function Checkout(props) {
           );
           return
         }
-        
+
         if(basket.length === 0) {
           setMessage(
             <Alert variant="filled" severity="info">
