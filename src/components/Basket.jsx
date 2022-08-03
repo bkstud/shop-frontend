@@ -29,7 +29,7 @@ export default function Basket(props) {
     let basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
     return (
     <Grid container spacing={3}>
-    <Grid item xs={{ flexGrow: 1 }}>
+    <Grid item>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 150, maxWidth: 750 }} aria-label="simple table">
             <TableHead>
