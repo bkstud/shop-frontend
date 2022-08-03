@@ -46,20 +46,19 @@ async function patchItems(endpoint, items) {
                     credentials: "include",
                     method: "PATCH",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store')
+                        Cookie: "store=" + Cookies.get('store'),
                     },
                     body: JSON.stringify(items)
                 })
 }
 
 async function postFeedback(feedback) {
-    return fetch(getApiUrl() + "/feedback", {        
-                    credentials: "include",
+    return fetch(getApiUrl() + "/feedback/", {        
                     method: "POST",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store')
+                        "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({"Feedback": feedback})
+                    body: JSON.stringify({"Contents": feedback})
                 })
 }
 
