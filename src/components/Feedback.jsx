@@ -18,13 +18,23 @@ export default function Feedback(props) {
         if(feedback === "") {
             return
         }
-        setMessage(
-            <Alert variant="filled" severity="success">
-            Feedback send! We will reply to you shortly.
-            </Alert>
-        )
-        setButtonDisabled(true)
-        postFeedback(feedback)
+        postFeedback(feedback).then((response) => {
+            if(response.ok){
+                setMessage(
+                    <Alert variant="filled" severity="success">
+                    Feedback send! We will reply to you shortly.
+                    </Alert>
+                )
+                setButtonDisabled(true)
+            }
+            else {
+                setMessage(
+                    <Alert variant="filled" severity="error">
+                    Something went wrong please try again later.
+                    </Alert>
+                )
+            }
+        })   
     }
 
     return (
