@@ -2,6 +2,7 @@ import Header from './Header';
 import Items from './ItemGrid' 
 import Basket from './Basket';
 import Checkout from './Checkout';
+import Feedback from './Feedback';
 import useUser from '../hooks/useUser'
 import useItems from '../hooks/useItems'
 import useBasket from '../hooks/useBasket'
@@ -22,6 +23,7 @@ export default function Page() {
           <Route path="/" element={<Items items={items} basket={basketHook}/>} />
           <Route path="/basket" element={<Basket basketHook={basketHook} user={user}/>} />
           <Route path="/checkout" element={<Checkout basketHook={basketHook} user={user}/>} />
+          <Route path="/feedback" element={<Feedback user={user}/>} />
         </Routes>
       </div>
     )

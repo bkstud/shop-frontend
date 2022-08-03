@@ -52,11 +52,23 @@ async function patchItems(endpoint, items) {
                 })
 }
 
+async function postFeedback(feedback) {
+    return fetch(getApiUrl() + "/feedback", {        
+                    credentials: "include",
+                    method: "POST",
+                    headers: {
+                        Cookie: "store=" + Cookies.get('store')
+                    },
+                    body: JSON.stringify({"Feedback": feedback})
+                })
+}
+
 export {
     getApiUrl,
     getCurrentUser,
     logoutUser,
     getItems,
     patchItems,
-    getBasket
+    getBasket,
+    postFeedback
 }

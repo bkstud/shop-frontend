@@ -9,9 +9,12 @@ import GithubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountMenu from './AccountMenu'
-import {getApiUrl} from '../api/Api'
+import HomeIcon from '@mui/icons-material/Home';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import {Link, useLocation} from 'react-router-dom';
+import {getApiUrl} from '../api/Api'
+import AccountMenu from './AccountMenu'
+
 
 export default function Header(props) {
   const location = useLocation();
@@ -34,12 +37,27 @@ export default function Header(props) {
                 </Badge>
               </IconButton>
             </Link>
-          
-          
           </IconButton>
+          
+          <Link to="/feedback">
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 1 }}>
+              <FeedbackIcon color="inherit"/>   
+            </IconButton>
+            </Link>
+            
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/">Shop</Link>
+            <Link to="/">
+              Shop
+              <HomeIcon/>
+            </Link>
           </Typography>
+
+
           <a href={getApiUrl() + "/login/github?location=" + location.pathname}>
               <IconButton color="inherit" aria-label="github login" href="url"
                           component="span">

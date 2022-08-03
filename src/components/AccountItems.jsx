@@ -8,6 +8,7 @@ import Logout from '@mui/icons-material/Logout';
 import {logoutUser} from '../api/Api'
 import Payment from '@mui/icons-material/Payment';
 import ShoppingBag from '@mui/icons-material/ShoppingBag';
+import Typography from '@mui/material/Typography';
 
 export default function AccountItems(props) {
     if (props.user) {
@@ -46,7 +47,9 @@ export default function AccountItems(props) {
     } else {
         return (
             <div>
-                Login to see options
+            <Typography variant="h10">
+            Login to see options
+            </Typography>
             </div>
         )
     }
