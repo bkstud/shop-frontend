@@ -13,7 +13,7 @@ export default function ItemGrid(props) {
             props.items.map( (it) => {
                   return (
                   <Grid item xs={4} key={it.ID}>
-                      <Item item={it} basket={props.basket}/>
+                      <Item item={it} basketHook={props.basketHook}/>
                 </Grid>);
             })
            }

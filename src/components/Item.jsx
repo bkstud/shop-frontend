@@ -11,15 +11,16 @@ import {patchItems} from '../api/Api';
 
 export default function Item(props) {
   const item = props.item;
-  const {basket, setBasket} = props.basket;
+  const {basket, setBasket} = props.basketHook;
   const [disabled, setDisabled] = React.useState(basket.some((value) => value.ID === item.ID));
+  React.useEffect(()=>{}, [basket])
   const addToCart = () => {
     const newBasket = basket.concat(item)
     setBasket(newBasket)
     patchItems("/basket/", newBasket)
     setDisabled(true)
   }
-  
+
   const removeFromCart = () => {
     const newBasket = basket.filter((value) => value.ID !== item.ID)
     setBasket(newBasket)
@@ -47,22 +48,22 @@ export default function Item(props) {
             <Typography color="text.secondary" variant="body3">
                 {item.Description}
             </Typography>
-        
+
             <Box sx={{ mt: 3, ml: 1, mb: 1}}>
                 <Button variant="contained"
                 onClick={addToCart}
                 disabled={disabled}
                 >Add to cart</Button>
-                
-                <IconButton 
+
+                <IconButton
                 onClick={removeFromCart}
                 disabled={!disabled}
                 color="error"
                 ><RemoveShoppingCart /></IconButton>
             </Box>
-            
-            
-            
+
+
+
         </Box>
     </Box>
   );

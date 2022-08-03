@@ -20,7 +20,7 @@ export default function Page() {
                 setUser={setUser}
                 basketCount={basketHook.basket.length}/>
         <Routes>
-          <Route path="/" element={<Items items={items} basket={basketHook}/>} />
+          <Route path="/" element={<Items items={items} basketHook={basketHook}/>} />
           <Route path="/basket" element={<Basket basketHook={basketHook} user={user}/>} />
           <Route path="/checkout" element={<Checkout basketHook={basketHook} user={user}/>} />
           <Route path="/feedback" element={<Feedback user={user}/>} />
