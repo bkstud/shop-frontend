@@ -14,6 +14,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import Alert from '@mui/material/Alert';
 import {Link} from 'react-router-dom';
 import {patchItems} from '../api/Api';
+import Cookies from 'js-cookie';
 
 
 export default function Basket(props) {
@@ -24,6 +25,7 @@ export default function Basket(props) {
         const newBasket = basket.filter((value) => value.ID !== ID)
         setBasket(newBasket)
         patchItems("/basket/", newBasket)
+        Cookies.set("basket", JSON.stringify(newBasket))
     }
     let buttonInactive = basket.length === 0 || !user
     let basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)

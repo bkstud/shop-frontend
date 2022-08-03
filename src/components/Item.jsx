@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import RemoveShoppingCart from '@mui/icons-material/RemoveShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import {patchItems} from '../api/Api';
-
+import Cookies from 'js-cookie';
 
 
 export default function Item(props) {
@@ -18,6 +18,7 @@ export default function Item(props) {
     const newBasket = basket.concat(item)
     setBasket(newBasket)
     patchItems("/basket/", newBasket)
+    Cookies.set("basket", JSON.stringify(newBasket))
     setDisabled(true)
   }
 
@@ -25,6 +26,7 @@ export default function Item(props) {
     const newBasket = basket.filter((value) => value.ID !== item.ID)
     setBasket(newBasket)
     patchItems("/basket/", newBasket)
+    Cookies.set("basket", JSON.stringify(newBasket))
     setDisabled(false)
   }
 
