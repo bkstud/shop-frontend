@@ -41,6 +41,16 @@ async function getBasket() {
                 })
 }
 
+async function getTransactions() {
+    return fetch(getApiUrl() + "/transactions/", {        
+                    credentials: 'include',
+                    method: "GET",
+                    headers: {
+                        Cookie: "store=" + Cookies.get('store')
+                    }
+                })
+}
+
 async function patchItems(endpoint, items) {
     return fetch(getApiUrl() + endpoint, {        
                     credentials: "include",
@@ -69,5 +79,6 @@ export {
     getItems,
     patchItems,
     getBasket,
-    postFeedback
+    postFeedback,
+    getTransactions
 }

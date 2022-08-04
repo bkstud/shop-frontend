@@ -2,13 +2,12 @@ import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import {logoutUser} from '../api/Api'
-import Payment from '@mui/icons-material/Payment';
 import ShoppingBag from '@mui/icons-material/ShoppingBag';
 import Typography from '@mui/material/Typography';
+import {Link} from 'react-router-dom';
 
 export default function AccountItems(props) {
     if (props.user) {
@@ -17,19 +16,12 @@ export default function AccountItems(props) {
             <MenuItem>
                 <Avatar/> {props.user}
             </MenuItem>
+            <Link to="/orders">
             <MenuItem>
-                <ShoppingBag /> Purchase History
+                <ShoppingBag /> Your orders
             </MenuItem>
-            <MenuItem>
-                <Payment /> Payment
-            </MenuItem>
+            </Link>
             <Divider />
-            <MenuItem>
-                <ListItemIcon>
-                <PersonAdd fontSize="small" />
-                </ListItemIcon>
-                Add another account
-            </MenuItem>
             <MenuItem>
                 <ListItemIcon>
                 <Settings fontSize="small" />

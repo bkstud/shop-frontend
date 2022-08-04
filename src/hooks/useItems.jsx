@@ -4,7 +4,6 @@ import {getItems} from '../api/Api'
 export default function useItems() {
     const [items, setItems] = useState([]);
     useEffect(() => {
-        setItems([])
         getItems().then((response) => {
             if(response.ok){
                 response.json().then(
