@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Item from './Item' 
 
-// TODO: items should be filtered by status to show 'available' only
+
 export default function ItemGrid(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>

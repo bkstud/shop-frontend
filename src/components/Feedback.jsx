@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import {postFeedback} from '../api/Api'
 
-export default function Feedback(props) {
+export default function Feedback(_props) {
     const [message, setMessage] = useState(null);
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [feedback, setFeedback] = useState("");
