@@ -4,6 +4,7 @@ import Basket from './Basket';
 import Checkout from './Checkout';
 import Feedback from './Feedback';
 import Orders from './Orders';
+import Login from './Login';
 import useUser from '../hooks/useUser'
 import useItems from '../hooks/useItems'
 import useBasket from '../hooks/useBasket'
@@ -28,6 +29,7 @@ export default function Page() {
           <Route path="/checkout" element={<Checkout basketHook={basketHook} user={user}/>} />
           <Route path="/feedback" element={<Feedback user={user}/>} />
           <Route path="/orders" element={<Orders transactions={transactions} user={user}/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </div>
     )

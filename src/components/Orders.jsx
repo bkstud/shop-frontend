@@ -49,7 +49,7 @@ export default function Orders(props) {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">{order.Item.Name}</TableCell>
-                            <TableCell align="left">{order.Item.Price}$</TableCell>
+                            <TableCell align="left">{order.Item.Price.toFixed(2)}$</TableCell>
                             <TableCell align="left">{order.Type}</TableCell>
                             <TableCell align="center">{order.Payment}</TableCell>
                             <TableCell align="center">{order.Status}</TableCell>

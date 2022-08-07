@@ -42,7 +42,7 @@ export default function Item(props) {
                 </Grid>
                 <Grid item>
                     <Typography gutterBottom variant="h6" component="div">
-                    ${item.Price}
+                    ${item.Price.toFixed(2)}
                     </Typography>
                 </Grid>
             </Grid>

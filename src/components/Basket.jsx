@@ -28,7 +28,7 @@ export default function Basket(props) {
         Cookies.set("basket", JSON.stringify(newBasket))
     }
     let buttonInactive = basket.length === 0 || !user
-    let basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0)
+    let basketSummary = basket.reduce((total, current) => {return total + current.Price}, 0.0)
     return (
     <Grid container spacing={3}>
     <Grid item>
@@ -50,7 +50,7 @@ export default function Basket(props) {
                     <TableCell component="th" scope="row">
                     {item.Name}
                     </TableCell>
-                    <TableCell align="left">{item.Price}$</TableCell>
+                    <TableCell align="left">{item.Price.toFixed(2)}$</TableCell>
                     <TableCell align="left">
                         <IconButton onClick={()=>removeFromBasket(item.ID)} color="error">
                             <RemoveShoppingCart />
@@ -67,7 +67,7 @@ export default function Basket(props) {
                     Sum
                     </TableCell>
                     <TableCell align="left">{
-                    basketSummary
+                    basketSummary.toFixed(2)
                     }$
                     </TableCell>
                     <TableCell align="left">
