@@ -19,6 +19,7 @@ async function getCurrentUser() {
 
 const logoutUser = () => {
     Cookies.remove('store')
+    Cookies.remove('basket')
 }
 
 async function getItems() {
