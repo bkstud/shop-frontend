@@ -75,13 +75,7 @@ export default function Header(props) {
               <GoogleIcon/>
             </IconButton>
           </a>
-          
-          
           <AccountMenu user={props.user} setUser={props.setUser}></AccountMenu>
-          
-          
-
-
         </Toolbar>
       </AppBar>
     </Box>

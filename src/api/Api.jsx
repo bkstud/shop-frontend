@@ -18,7 +18,7 @@ async function getCurrentUser() {
 }
 
 const logoutUser = () => {
-    Cookies.remove('store', { path: '' })
+    Cookies.remove('store')
 }
 
 async function getItems() {
