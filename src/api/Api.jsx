@@ -9,7 +9,6 @@ const getApiUrl = () => {
 
 async function getCurrentUser() {
     return fetch(getApiUrl() + "/user/", {        
-                    credentials: 'include',
                     method: "GET",
                     headers: {
                         Token: Cookies.get('token')
@@ -30,7 +29,6 @@ async function getItems() {
 
 async function getBasket() {
     return fetch(getApiUrl() + "/basket/", {        
-                    credentials: 'include',
                     method: "GET",
                     headers: {
                         Token: Cookies.get('token')
@@ -40,7 +38,6 @@ async function getBasket() {
 
 async function getTransactions() {
     return fetch(getApiUrl() + "/transactions/", {        
-                    credentials: 'include',
                     method: "GET",
                     headers: {
                         Token: Cookies.get('token')
@@ -50,7 +47,6 @@ async function getTransactions() {
 
 async function patchItems(endpoint, items) {
     return fetch(getApiUrl() + endpoint, {        
-                    credentials: "include",
                     method: "PATCH",
                     headers: {
                         Token: Cookies.get('token')
