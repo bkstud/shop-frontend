@@ -7,11 +7,16 @@ const getApiUrl = () => {
     return BACKEND_ADDRESS + "/api/v1"
 }
 
+const getToken = () => {
+    console.log("current token is:=", Cookies.get('token'))
+    return Cookies.get('token') ? Cookies.get('token') : ""
+}
+
 async function getCurrentUser() {
     return fetch(getApiUrl() + "/user/", {        
                     method: "GET",
                     headers: {
-                        Token: Cookies.get('token')
+                        Token: getToken()
                     }
                 })
 }
@@ -31,7 +36,7 @@ async function getBasket() {
     return fetch(getApiUrl() + "/basket/", {        
                     method: "GET",
                     headers: {
-                        Token: Cookies.get('token')
+                        Token: getToken()
                     }
                 })
 }
@@ -40,7 +45,7 @@ async function getTransactions() {
     return fetch(getApiUrl() + "/transactions/", {        
                     method: "GET",
                     headers: {
-                        Token: Cookies.get('token')
+                        Token: getToken()
                     }
                 })
 }
@@ -49,7 +54,7 @@ async function patchItems(endpoint, items) {
     return fetch(getApiUrl() + endpoint, {        
                     method: "PATCH",
                     headers: {
-                        Token: Cookies.get('token')
+                        Token: getToken()
                     },
                     body: JSON.stringify(items)
                 })
