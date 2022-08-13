@@ -12,23 +12,19 @@ async function getCurrentUser() {
                     credentials: 'include',
                     method: "GET",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store')
+                        Token: Cookies.get('token')
                     }
                 })
 }
 
 const logoutUser = () => {
-    Cookies.remove('store')
+    Cookies.remove('token')
     Cookies.remove('basket')
 }
 
 async function getItems() {
     return fetch(getApiUrl() + "/items/", {        
-                    credentials: 'include',
                     method: "GET",
-                    headers: {
-                        Cookie: "store=" + Cookies.get('store')
-                    }
                 })
 }
 
@@ -37,7 +33,7 @@ async function getBasket() {
                     credentials: 'include',
                     method: "GET",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store')
+                        Token: Cookies.get('token')
                     }
                 })
 }
@@ -47,7 +43,7 @@ async function getTransactions() {
                     credentials: 'include',
                     method: "GET",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store')
+                        Token: Cookies.get('token')
                     }
                 })
 }
@@ -57,7 +53,7 @@ async function patchItems(endpoint, items) {
                     credentials: "include",
                     method: "PATCH",
                     headers: {
-                        Cookie: "store=" + Cookies.get('store'),
+                        Token: Cookies.get('token')
                     },
                     body: JSON.stringify(items)
                 })

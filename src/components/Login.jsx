@@ -17,7 +17,7 @@ export default function Login(_props) {
         }
         
         if (query.get("token")) {
-            Cookies.set("store", query.get("token"))
+            Cookies.set("token", query.get("token"))
             setStatus(
                 <Alert variant="filled" severity="success">
               Logged in successfully.
