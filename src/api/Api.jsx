@@ -8,12 +8,11 @@ const getApiUrl = () => {
 }
 
 const getToken = () => {
-    console.log("current token is:=", Cookies.get('token'))
     return Cookies.get('token') ? Cookies.get('token') : ""
 }
 
 async function getCurrentUser() {
-    return fetch(getApiUrl() + "/user/", {        
+    return fetch(getApiUrl() + "/user/", {
                     method: "GET",
                     headers: {
                         Token: getToken()
@@ -27,13 +26,13 @@ const logoutUser = () => {
 }
 
 async function getItems() {
-    return fetch(getApiUrl() + "/items/", {        
+    return fetch(getApiUrl() + "/items/", {
                     method: "GET",
                 })
 }
 
 async function getBasket() {
-    return fetch(getApiUrl() + "/basket/", {        
+    return fetch(getApiUrl() + "/basket/", {
                     method: "GET",
                     headers: {
                         Token: getToken()
@@ -42,7 +41,7 @@ async function getBasket() {
 }
 
 async function getTransactions() {
-    return fetch(getApiUrl() + "/transactions/", {        
+    return fetch(getApiUrl() + "/transactions/", {
                     method: "GET",
                     headers: {
                         Token: getToken()
@@ -51,7 +50,7 @@ async function getTransactions() {
 }
 
 async function patchItems(endpoint, items) {
-    return fetch(getApiUrl() + endpoint, {        
+    return fetch(getApiUrl() + endpoint, {
                     method: "PATCH",
                     headers: {
                         Token: getToken()
@@ -61,12 +60,24 @@ async function patchItems(endpoint, items) {
 }
 
 async function postFeedback(feedback) {
-    return fetch(getApiUrl() + "/feedback/", {        
+    return fetch(getApiUrl() + "/feedback/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({"Contents": feedback})
+                })
+}
+
+async function createCheckoutSession(items) {
+    return fetch(getApiUrl() + "/payment/create-checkout-session", {
+                    method: "POST",
+                    redirect: "manual",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Token: getToken()
+                    },
+                    body: JSON.stringify({"Items": items})
                 })
 }
 
@@ -78,5 +89,6 @@ export {
     patchItems,
     getBasket,
     postFeedback,
-    getTransactions
+    getTransactions,
+    createCheckoutSession
 }

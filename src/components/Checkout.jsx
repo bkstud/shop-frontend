@@ -1,6 +1,6 @@
 import Alert from '@mui/material/Alert';
 import React, { useState, useEffect } from "react";
-import {getApiUrl, patchItems} from '../api/Api'
+import {createCheckoutSession, patchItems} from '../api/Api'
 
 
 export default function Checkout(props) {
@@ -21,10 +21,18 @@ export default function Checkout(props) {
         }
 
         if(formGate) {
-          const form = document.getElementById("checkout-form")
-          if(form) {
-            form.submit();
-          }
+          let items = basket.map(item => item.ID.toString())
+          console.log('items:=', items)
+          createCheckoutSession(items).then(
+            response => {
+              if(response.ok) {
+                response.json().then(
+                  url => window.location = url
+                  )
+
+              }
+            }
+          )
           return
         }
 
@@ -61,20 +69,9 @@ export default function Checkout(props) {
     if (formGate) {
       return (
         <div>
-          <form action={getApiUrl() + "/payment/create-checkout-session"} method="POST" id='checkout-form'>
-          {
-            basket.map(
-              (item) => (
-                <div>
-                  <input type="hidden" key={item.ID} name="name" value={item.Name}></input>
-                  <input type="hidden" key={item.ID} name="price" value={item.Price}></input>
-                  <input type="hidden" key={item.ID} name="id" value={item.ID}></input>
-                </div>
-              )
-            )
-          }
-
-          </form>
+            <Alert variant="filled" severity="info">
+              Redirecting to stripe payment...
+            </Alert>
         </div>
       )
     }
