@@ -13,6 +13,9 @@ export default function Item(props) {
   const item = props.item;
   const {basket, setBasket} = props.basketHook;
   const [disabled, setDisabled] = React.useState(basket.some((value) => value.ID === item.ID));
+  React.useEffect(() => {
+    setDisabled(basket.some((value) => value.ID === item.ID))
+  },[basket, item.ID])
   const addToCart = () => {
     const newBasket = basket.concat(item)
     setBasket(newBasket)
