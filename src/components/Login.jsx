@@ -24,7 +24,6 @@ export default function Login(_props) {
                 </Alert>
             )
             window.location = location
-            return
         } else {
             setStatus(
                 <Alert variant="filled" severity="error" sx={{ width: '100%' }}>
